@@ -3,9 +3,9 @@
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 
-A fast, highly-optimized, and memory-efficient Arduino library for the **Everlight ALS-PT19** ambient light sensor. 
+A fast, highly-optimized, and memory-efficient Arduino library for the **Everlight ALS-PT19** ambient light sensor.
 
-The ALS-PT19 is an excellent, low-cost phototransistor that generates an analog current proportional to ambient illuminance. This library reads that analog output and converts it into a precise **LUX** value. 
+The ALS-PT19 is an excellent, low-cost phototransistor that generates an analog current proportional to ambient illuminance. This library reads that analog output and converts it into a precise **LUX** value.
 
 Because the sensor is highly sensitive to the Infrared (IR) spectrum, its output changes drastically depending on the light source. This library solves that by offering **compile-time environmental calibration** for Fluorescent/LED vs. Incandescent lighting, ensuring accurate readings without wasting processing power.
 
@@ -25,19 +25,24 @@ The ALS-PT19 requires a simple pull-down resistor to convert its output current 
 | **GND** | Arduino GND |
 | **OUT** | Arduino Analog Pin (e.g., `A0`) |
 
-**Important:** You must place a pull-down load resistor between the `OUT` pin and `GND`. 
+### Important:
+You must place a pull-down load resistor between the `OUT` pin and `GND`. 
 * **10kΩ** is the standard recommended value (and the default for this library).
 * If you use a different resistor, you must specify it in your code (see Advanced Usage).
 
 ## Installation
+<!-- Comment: This is following the standard Arduino library installation instructions. The "Option 2: Library Manager" section can be left in place even if the library isn't published there yet, as it provides a clear path for future users once it is available.
+-->
 
-**Option 1: Manual ZIP Installation**
+### Option 1: Manual ZIP Installation
+
 1. Click the green **Code** button on this repository and select **Download ZIP**.
 2. Open the Arduino IDE.
 3. Navigate to **Sketch** -> **Include Library** -> **Add .ZIP Library...**
 4. Select the downloaded ZIP file.
 
-**Option 2: Library Manager (If published)**
+### Option 2: Library Manager (If published)
+
 1. Open the Arduino IDE.
 2. Go to **Tools** -> **Manage Libraries...**
 3. Search for `ALS_PT19`.
