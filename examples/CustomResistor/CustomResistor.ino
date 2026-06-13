@@ -19,7 +19,21 @@
 
 #include <ALS_PT19.h>
 
-const int SENSOR_PIN = A1;
+// Board-specific pin definitions 
+// Adjust for your hardware. The ESP32 and ESP8266 have different 
+// pinouts for analog input and built-in LEDs.
+#if defined(ESP32)
+  const int SENSOR_PIN = 35;   // ESP32 analog input (GPIO35/ADC1_CH7)
+  const int LED_PIN = 2;        // ESP32 built-in LED (GPIO2)
+#elif defined(ESP8266)
+  const int SENSOR_PIN = A0;    // ESP8266 analog input
+  const int LED_PIN = D4;        // ESP8266 built-in LED (GPIO2/D4)
+#else
+  // Default: Arduino AVR boards (Uno, Nano, Mega)
+  const int SENSOR_PIN = A0;
+  const int LED_PIN = LED_BUILTIN;
+#endif
+
 
 // Define your custom resistor value here in Ohms.
 // The datasheet occasionally references 7.5k (7500 Ohms) for specific transient profiles.
