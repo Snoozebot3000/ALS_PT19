@@ -3,6 +3,7 @@
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 [![Compile Sketches](https://github.com/Snoozebot3000/ALS_PT19/actions/workflows/compile.yml/badge.svg)](https://github.com/Snoozebot3000/ALS_PT19/actions/workflows/compile.yml)
+[![Arduino Lint](https://github.com/Snoozebot3000/ALS_PT19/actions/workflows/lint.yml/badge.svg)](https://github.com/Snoozebot3000/ALS_PT19/actions/workflows/lint.yml)
 
 A fast, highly-optimized, and memory-efficient Arduino library for the **Everlight ALS-PT19** ambient light sensor.
 
