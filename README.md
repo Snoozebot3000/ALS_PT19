@@ -127,6 +127,8 @@ Check the examples/ folder in the Arduino IDE (File -> Examples -> ALS_PT19) for
 
 * CustomResistor: How to calibrate for an incandescent environment and a non-standard resistor.
 
+* NightLight: A smart-home style example that turns on an LED when the room goes dark.
+
 ## License
 
 This library is licensed under the MIT License. You are free to use it in personal, educational, and commercial projects.
