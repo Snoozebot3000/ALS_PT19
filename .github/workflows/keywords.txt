@@ -1,0 +1,10 @@
+# Datatypes (Orange)
+ALSPT19	KEYWORD1
+
+# Methods and Functions (Orange)
+begin   KEYWORD2
+readLux	KEYWORD2
+
+# Constants (Blue)
+LIGHTING_FLUORESCENT	LITERAL1
+LIGHTING_INCANDESCENT	LITERAL1
