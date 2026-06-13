@@ -61,7 +61,9 @@ jobs:
         uses: arduino/compile-sketches@v1
         with:
           fqbn: ${{ matrix.board.fqbn }}
-          platforms: ${{ toJSON(matrix.board.platforms) }}
+          # Conditionally add platform source URLs if defined in the matrix
+          platforms: ${{ matrix.board.platforms != null && toJSON(matrix.board.platforms) || '' }}
+        
           # This tells the action to look for all .ino files in the examples directory
           sketch-paths: |
             examples
