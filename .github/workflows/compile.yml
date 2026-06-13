@@ -67,4 +67,5 @@ jobs:
           sketch-paths: |
             examples
           # Tell the compiler to treat warnings as errors to enforce clean code
-          cli-compile-flags: --warnings="all"
+          cli-compile-flags: |
+            - --warnings=all
