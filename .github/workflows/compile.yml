@@ -1,0 +1,66 @@
+name: Compile Sketches
+
+# Trigger the workflow when code is pushed to the main branch 
+# or when a pull request is opened.
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    name: Test on ${{ matrix.board.fqbn }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      # Keep running other matrix jobs even if one fails
+      fail-fast: false
+      
+      # Define the matrix of boards to compile against
+      matrix:
+        board:
+          # Standard Arduino AVR (Arduino Uno R3, Nano, Mega)
+          - fqbn: arduino:avr:uno
+          
+          # Arduino Uno R4 Minima (Renesas RA4M1 architecture)
+          #- fqbn: arduino:renesas_uno:minima
+          
+          # Arduino Uno R4 WiFi (Renesas RA4M1 architecture)
+          #- fqbn: arduino:renesas_uno:unor4wifi
+
+          # ARM Cortex-M0+ (Arduino Nano 33 IoT, Zero, MKR series)
+          #- fqbn: arduino:samd:nano_33_iot
+          
+          # nRF52840 (Arduino Nano 33 BLE / BLE Sense)
+          #- fqbn: arduino:mbed_nano:nano33ble
+          
+          # ESP8266 (NodeMCU, Wemos D1 Mini)
+          #- fqbn: esp8266:esp8266:generic
+            #platforms: |
+            #  - name: esp8266:esp8266
+            #    source-url: https://arduino.esp8266.com/stable/package_esp8266com_index.json
+                
+          # ESP32 (Standard Dev Module)
+          #- fqbn: esp32:esp32:esp32
+           # platforms: |
+            #  - name: esp32:esp32
+            #    source-url: https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+
+    steps:
+      # Step 1: Check out the repository code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Compile all sketches in the 'examples' folder
+      - name: Compile examples
+        uses: arduino/compile-sketches@v1
+        with:
+          fqbn: ${{ matrix.board.fqbn }}
+          platforms: ${{ matrix.board.platforms }}
+          # This tells the action to look for all .ino files in the examples directory
+          sketch-paths: |
+            examples
+          # Tell the compiler to treat warnings as errors to enforce clean code
+          cli-compile-flags: |
+            - --warnings="all"
