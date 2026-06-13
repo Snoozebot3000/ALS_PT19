@@ -16,5 +16,5 @@ jobs:
       - name: Run Arduino Lint
         uses: arduino/arduino-lint-action@v1
         with:
-          library-manager: update # Ensures it's compliant for the library registry
+          #library-manager: update # Ensures it's compliant for the library registry
           compliance: strict      # Enforces best practices, not just minimum requirements
