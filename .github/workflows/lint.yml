@@ -1,0 +1,20 @@
+name: Arduino Lint
+
+on:
+  push:
+    branches: [ main, dev ]
+  pull_request:
+    branches: [ main, dev ]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Run Arduino Lint
+        uses: arduino/arduino-lint-action@v1
+        with:
+          library-manager: update # Ensures it's compliant for the library registry
+          compliance: strict      # Enforces best practices, not just minimum requirements
