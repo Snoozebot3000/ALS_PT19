@@ -62,8 +62,7 @@ jobs:
         with:
           fqbn: ${{ matrix.board.fqbn }}
           # Conditionally add platform source URLs if defined in the matrix
-          platforms: ${{ matrix.board.platforms != null && toJSON(matrix.board.platforms) || '' }}
-        
+          platforms: ${{ matrix.board.platforms }}        
           # This tells the action to look for all .ino files in the examples directory
           sketch-paths: |
             examples
