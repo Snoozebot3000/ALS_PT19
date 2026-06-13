@@ -22,7 +22,14 @@
 #define ALS_PT19_H
 
 #include <Arduino.h>
-#include <avr/pgmspace.h>
+
+
+// Platform-specific PROGMEM handling
+#if defined(ESP32) || defined(ESP8266)
+  #include <pgmspace.h>  // ESP32 and ESP8266
+#else
+  #include <avr/pgmspace.h>  // AVR boards (Uno, Mega, etc.)
+#endif
 
 /**
  * @enum LightEnv
