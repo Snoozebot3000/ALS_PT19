@@ -13,6 +13,8 @@
  * - Sensor GND pin   -> Arduino GND
  * - Sensor OUT pin   -> Arduino Analog Pin A1
  * - 7.5k Ohm Resistor -> Connect between Sensor OUT and GND
+ * * Note: The ALS-PT19 datasheet occasionally references a 7.5k Ohm load resistor for specific transient response profiles.
+ * * Additionally, this example uses an alternate analog pin (A1) to demonstrate that the library can be used on any analog input.
  */
 
 #include <ALS_PT19.h>
@@ -48,5 +50,5 @@ void loop() {
   Serial.print(lux);
   Serial.println(" Lux");
   
-  delay(500); // Read twice a second
+  delay(1000); // Read once a second
 }
