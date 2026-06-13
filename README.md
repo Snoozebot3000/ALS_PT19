@@ -74,32 +74,34 @@ void loop() {
 }
 
 ```
+
 # API Reference
 ## Environments (Template Parameter)
 
 You must provide one of these two flags inside the angle brackets < > when you create the sensor object:
 
-  - LIGHTING_FLUORESCENT: Use this for standard white LEDs, fluorescent tubes, and natural daylight.
+* LIGHTING_FLUORESCENT: Use this for standard white LEDs, fluorescent tubes, and natural daylight.
 
-  - LIGHTING_INCANDESCENT: Use this for traditional warm incandescent or halogen bulbs, which emit heavy infrared (IR) light.
+* LIGHTING_INCANDESCENT: Use this for traditional warm incandescent or halogen bulbs, which emit heavy infrared (IR) light.
 
 ## Constructor
+
 ```C++
 
 ALSPT19<Environment> sensorName(uint8_t pin, float rLoad = 10000.0);
 ```
-  - pin: The analog pin connected to the sensor's OUT pin.
 
-  - rLoad (Optional): The value of your pull-down resistor in Ohms. If left blank, it defaults to 10000.0 (10kΩ).
+* pin: The analog pin connected to the sensor's OUT pin.
+
+* rLoad (Optional): The value of your pull-down resistor in Ohms. If left blank, it defaults to 10000.0 (10kΩ).
 
 ## Methods
 
-  - void begin(): Configures the analog pin. Call this inside your setup() function.
+* void begin(): Configures the analog pin. Call this inside your setup() function.
 
-  - float readLux(): Reads the analog pin, performs interpolation, applies resistor scaling, and returns the current illuminance in LUX.
+* float readLux(): Reads the analog pin, performs interpolation, applies resistor scaling, and returns the current illuminance in LUX.
 
-
-# Advanced Usage (Custom Resistors)
+## Advanced Usage (Custom Resistors)
 
 If your specific hardware design uses a different resistor (for example, a 7.5kΩ resistor to change the transient profile), you can pass that exact value to the library so it can mathematically correct the LUX output.
 
@@ -120,10 +122,10 @@ void setup() {
 
 Check the examples/ folder in the Arduino IDE (File -> Examples -> ALS_PT19) for more details:
 
-  - BasicRead: Standard usage with a 10k resistor.
+* BasicRead: Standard usage with a 10k resistor.
 
-  - CustomResistor: How to calibrate for an incandescent environment and a non-standard resistor.
+* CustomResistor: How to calibrate for an incandescent environment and a non-standard resistor.
 
-# License
+## License
 
 This library is licensed under the MIT License. You are free to use it in personal, educational, and commercial projects.
