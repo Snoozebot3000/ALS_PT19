@@ -99,6 +99,31 @@ ALSPT19<Environment> sensorName(uint8_t pin, float rLoad = 10000.0);
   - float readLux(): Reads the analog pin, performs interpolation, applies resistor scaling, and returns the current illuminance in LUX.
 
 
+# Advanced Usage (Custom Resistors)
+
+If your specific hardware design uses a different resistor (for example, a 7.5kΩ resistor to change the transient profile), you can pass that exact value to the library so it can mathematically correct the LUX output.
+
+```C++
+
+#include <ALS_PT19.h>
+
+// Tell the library you are using a 7500 Ohm resistor
+ALSPT19<LIGHTING_FLUORESCENT> lightSensor(A1, 7500.0);
+
+void setup() {
+  lightSensor.begin();
+}
+// readLux() will automatically scale its output!
+```
+
+## Examples Included
+
+Check the examples/ folder in the Arduino IDE (File -> Examples -> ALS_PT19) for more details:
+
+  - BasicRead: Standard usage with a 10k resistor.
+
+  - CustomResistor: How to calibrate for an incandescent environment and a non-standard resistor.
+
 # License
 
 This library is licensed under the MIT License. You are free to use it in personal, educational, and commercial projects.
