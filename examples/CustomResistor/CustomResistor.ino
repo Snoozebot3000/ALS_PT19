@@ -27,7 +27,7 @@
   const int LED_PIN = 2;        // ESP32 built-in LED (GPIO2)
 #elif defined(ESP8266)
   const int SENSOR_PIN = A0;    // ESP8266 analog input
-  const int LED_PIN = D4;        // ESP8266 built-in LED (GPIO2/D4)
+  const int LED_PIN = 2;        // ESP8266 built-in LED (GPIO2)
 #else
   // Default: Arduino AVR boards (Uno, Nano, Mega)
   const int SENSOR_PIN = A0;
