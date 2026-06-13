@@ -10,6 +10,7 @@ The ALS-PT19 is an excellent, low-cost phototransistor that generates an analog 
 Because the sensor is highly sensitive to the Infrared (IR) spectrum, its output changes drastically depending on the light source. This library solves that by offering **compile-time environmental calibration** for Fluorescent/LED vs. Incandescent lighting, ensuring accurate readings without wasting processing power.
 
 ## Features
+
 * **Compile-Time Optimization:** Uses C++ templates to select the lighting environment. The compiler completely drops the math and logic for the unused environment, saving flash memory and execution time.
 * **SRAM Friendly:** Lookup tables are stored entirely in `PROGMEM` (Flash memory), keeping your precious SRAM free for other tasks.
 * **Lightning Fast Math:** Uses bit-shifting and linear interpolation instead of expensive floating-point division to calculate precise LUX values.
@@ -17,7 +18,7 @@ Because the sensor is highly sensitive to the Infrared (IR) spectrum, its output
 
 ## Hardware Hookup
 
-The ALS-PT19 requires a simple pull-down resistor to convert its output current into a readable voltage. 
+The ALS-PT19 requires a simple pull-down resistor to convert its output current into a readable voltage.
 
 | Sensor Pin | Connection |
 | :--- | :--- |
@@ -26,7 +27,8 @@ The ALS-PT19 requires a simple pull-down resistor to convert its output current 
 | **OUT** | Arduino Analog Pin (e.g., `A0`) |
 
 ### Important:
-You must place a pull-down load resistor between the `OUT` pin and `GND`. 
+You must place a pull-down load resistor between the `OUT` pin and `GND`.
+
 * **10kΩ** is the standard recommended value (and the default for this library).
 * If you use a different resistor, you must specify it in your code (see Advanced Usage).
 
@@ -72,6 +74,30 @@ void loop() {
 }
 
 ```
+# API Reference
+## Environments (Template Parameter)
+
+You must provide one of these two flags inside the angle brackets < > when you create the sensor object:
+
+  - LIGHTING_FLUORESCENT: Use this for standard white LEDs, fluorescent tubes, and natural daylight.
+
+  - LIGHTING_INCANDESCENT: Use this for traditional warm incandescent or halogen bulbs, which emit heavy infrared (IR) light.
+
+## Constructor
+```C++
+
+ALSPT19<Environment> sensorName(uint8_t pin, float rLoad = 10000.0);
+```
+  - pin: The analog pin connected to the sensor's OUT pin.
+
+  - rLoad (Optional): The value of your pull-down resistor in Ohms. If left blank, it defaults to 10000.0 (10kΩ).
+
+## Methods
+
+  - void begin(): Configures the analog pin. Call this inside your setup() function.
+
+  - float readLux(): Reads the analog pin, performs interpolation, applies resistor scaling, and returns the current illuminance in LUX.
+
 
 # License
 
