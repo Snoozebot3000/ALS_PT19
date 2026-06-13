@@ -4,9 +4,9 @@ name: Compile Sketches
 # or when a pull request is opened.
 on:
   push:
-    branches: [ main ]
+    branches: [ main, dev ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, dev ]
 
 # env block to silence the warning and opt into Node 24
 env:
@@ -28,28 +28,28 @@ jobs:
           - fqbn: arduino:avr:uno
           
           # Arduino Uno R4 Minima (Renesas RA4M1 architecture)
-          #- fqbn: arduino:renesas_uno:minima
+          - fqbn: arduino:renesas_uno:minima
           
           # Arduino Uno R4 WiFi (Renesas RA4M1 architecture)
-          #- fqbn: arduino:renesas_uno:unor4wifi
+          - fqbn: arduino:renesas_uno:unor4wifi
 
           # ARM Cortex-M0+ (Arduino Nano 33 IoT, Zero, MKR series)
-          #- fqbn: arduino:samd:nano_33_iot
+          - fqbn: arduino:samd:nano_33_iot
           
           # nRF52840 (Arduino Nano 33 BLE / BLE Sense)
-          #- fqbn: arduino:mbed_nano:nano33ble
+          - fqbn: arduino:mbed_nano:nano33ble
           
           # ESP8266 (NodeMCU, Wemos D1 Mini)
-          #- fqbn: esp8266:esp8266:generic
-            #platforms: |
-            #  - name: esp8266:esp8266
-            #    source-url: https://arduino.esp8266.com/stable/package_esp8266com_index.json
+          - fqbn: esp8266:esp8266:generic
+            platforms: |
+              - name: esp8266:esp8266
+                source-url: https://arduino.esp8266.com/stable/package_esp8266com_index.json
                 
           # ESP32 (Standard Dev Module)
-          #- fqbn: esp32:esp32:esp32
-           # platforms: |
-            #  - name: esp32:esp32
-            #    source-url: https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+          - fqbn: esp32:esp32:esp32
+            platforms: |
+              - name: esp32:esp32
+                source-url: https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
 
     steps:
       # Step 1: Check out the repository code
