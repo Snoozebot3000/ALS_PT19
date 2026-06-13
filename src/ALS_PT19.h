@@ -23,12 +23,10 @@
 
 #include <Arduino.h>
 
-
-// Platform-specific PROGMEM handling
-#if defined(ESP32) || defined(ESP8266)
-  #include <pgmspace.h>  // ESP32 and ESP8266
-#else
-  #include <avr/pgmspace.h>  // AVR boards (Uno, Mega, etc.)
+// Only explicitly include the AVR PROGMEM header if we are compiling for an 8-bit AVR chip (Uno R3, Mega, Nano).
+// All other modern 32-bit architectures (ESP32, ESP8266, SAMD, nRF, Renesas) handle PROGMEM natively via Arduino.h.
+#if defined(__AVR__)
+  #include <avr/pgmspace.h>
 #endif
 
 /**
